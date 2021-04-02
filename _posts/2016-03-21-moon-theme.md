@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title:  "Moon Jekyll Theme"
@@ -49,7 +50,7 @@ That's all.
       
 See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.      
 
-## Site Setup
+## 
 A quick checklist of the files you’ll want to edit to get up and running.    
 
 ### Site Wide Configuration
@@ -61,7 +62,13 @@ The title of your site... shocker!
 
 Example `title: My Awesome Site`
 
-#### bio
+#### 달
+오늘은 달의무늬이 아주 잘보였다.
+달자체가 너무 밝지도 않으면서도 은은하게 누런빛이 띄는게 달의무늬를 뚜렸하게 해주는 역할을했다.
+달의무늬은 토끼가 허리를 굽히고 몸을 배배꼬는 모습이였다.
+진짜 달의 무늬가 너무 선명하고 아름다워서 돗자릴깔고 누워서 멍때리고 있고 싶었을정도다.
+앞으로 나에게 얼마나 이런 여유로움이 있을까....
+{(참고로 노래듣느라 감성적이게 쓴거임)이라고 해봤어요}
 
 The description to show on your homepage.
 
