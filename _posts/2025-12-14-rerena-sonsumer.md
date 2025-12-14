@@ -1,18 +1,15 @@
 ---
-
 layout: post
 title: "메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석 (Rerena 프로젝트)"
 date: 2025-12-14
 excerpt: "설정 파일 변경만으로 Redis, RabbitMQ, NATS Consumer를 무중단 전환하는 자바 아키텍처 분석"
-project: true
+project: "true"
 tag:
-
-* Java
-* Architecture
-* Messaging
-* Strategy Pattern
-* Hot Reloading
-
+  - "Java"
+  - "Architecture"
+  - "Messaging"
+  - "Strategy Pattern"
+  - "Hot Reloading"
 ---
 
 # 📝 메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석
