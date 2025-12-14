@@ -18,7 +18,7 @@ comments: true
 
 ---
 
-## 1. 개요 및 프로젝트 목표 (Introduction)
+## 1. 개요 및 프로젝트 목표 (Introduction) 
 
 **Rerena 프로젝트**는 다양한 메시징 브로커(**Redis, RabbitMQ, NATS**)를 유연하게 지원하는 자바 Consumer 아키텍처입니다.
 핵심 목표는 설정 파일(`config.properties`) 변경만으로 애플리케이션 재시작 없이 **메시징 브로커를 동적으로 전환(Hot Reloading)** 하는 것입니다.
