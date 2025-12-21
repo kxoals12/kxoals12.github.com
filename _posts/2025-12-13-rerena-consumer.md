@@ -39,7 +39,7 @@ comments: true
 ### 2.1 클래스 다이어그램
 
 
-<div class="mermaid">
+<div class="language-mermaid">
 classDiagram
     direction LR
 
