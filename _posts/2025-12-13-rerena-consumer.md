@@ -12,6 +12,17 @@ tag:
 comments: true
 ---
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default',
+    securityLevel: 'loose',
+    // 폰트나 선 굵기 등 스타일이 깨질 경우를 대비한 설정
+    flowchart: { useMaxWidth: true, htmlLabels: true }
+  });
+</script>
+
 ## Rerena 프로젝트
 
 ---
@@ -36,16 +47,6 @@ comments: true
 프로젝트는 **Interface → Abstract Class → Concrete Implementation** 구조를 사용하며, 이는 전형적인 **전략 패턴(Strategy Pattern)** 구현입니다.
 
 ### 2.1 클래스 다이어그램
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: 'default',
-    securityLevel: 'loose' // HTML 태그 허용 등 유연한 렌더링을 위해 유지
-  });
-</script>
 
 <div class="mermaid">
 classDiagram
@@ -99,6 +100,7 @@ classDiagram
         -restartConsumer()
     }
 
+    %% 관계 정의: 문법 오류 방지를 위해 공백 처리 주의
     MessageConsumer <|.. AbstractConsumer
     AbstractConsumer <|-- RedisConsumer
     AbstractConsumer <|-- RabbitMQConsumer
@@ -108,6 +110,7 @@ classDiagram
     Rerenaconsumer ..> ConfigLoader
     Rerenaconsumer ..> BrokerType
 </div>
+
 
 ## 3. 동적 동작 분석: 시퀀스 다이어그램
 
