@@ -43,67 +43,75 @@ comments: true
 ### 2.1 클래스 다이어그램
 
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  // 라이브러리 초기화
+  mermaid.initialize({ 
+    startOnLoad: true,
+    theme: 'default'
+  });
+</script>
+
 <div class="mermaid">
 classDiagram
-  direction LR
+    direction LR
 
-  class MessageConsumer {
-      <<interface>>
-      +connect()
-      +consumeMessages()
-      +close()
-  }
+    class MessageConsumer {
+        <<interface>>
+        +connect()
+        +consumeMessages()
+        +close()
+    }
 
-  class AbstractConsumer {
-      <<abstract>>
-      #String host
-      #int port
-      #String queue
-      +connect()
-  }
+    class AbstractConsumer {
+        <<abstract>>
+        #String host
+        #int port
+        #String queue
+        +connect()
+    }
 
-  class BrokerType {
-      <<enumeration>>
-      REDIS
-      RABBITMQ
-      NATS
-  }
+    class BrokerType {
+        <<enumeration>>
+        REDIS
+        RABBITMQ
+        NATS
+    }
 
-  class RedisConsumer {
-      +consumeMessages()
-  }
+    class RedisConsumer {
+        +consumeMessages()
+    }
 
-  class RabbitMQConsumer {
-      +consumeMessages()
-  }
+    class RabbitMQConsumer {
+        +consumeMessages()
+    }
 
-  class NatsConsumer {
-      +consumeMessages()
-  }
+    class NatsConsumer {
+        +consumeMessages()
+    }
 
-  class ConfigLoader {
-      +load()
-      +get(String key)
-      +watch(Runnable onChange)
-  }
+    class ConfigLoader {
+        +load()
+        +get(String key)
+        +watch(Runnable onChange)
+    }
 
-  class Rerenaconsumer {
-      -MessageConsumer consumer
-      -ExecutorService executor
-      +start()
-      -startConsumer()
-      -restartConsumer()
-  }
+    class Rerenaconsumer {
+        -MessageConsumer consumer
+        -ExecutorService executor
+        +start()
+        -startConsumer()
+        -restartConsumer()
+    }
 
-  %% 관계 정의
-  MessageConsumer <|.. AbstractConsumer
-  AbstractConsumer <|-- RedisConsumer
-  AbstractConsumer <|-- RabbitMQConsumer
-  AbstractConsumer <|-- NatsConsumer
+    MessageConsumer <|.. AbstractConsumer
+    AbstractConsumer <|-- RedisConsumer
+    AbstractConsumer <|-- RabbitMQConsumer
+    AbstractConsumer <|-- NatsConsumer
 
-  Rerenaconsumer --> MessageConsumer
-  Rerenaconsumer ..> ConfigLoader
-  Rerenaconsumer ..> BrokerType
+    Rerenaconsumer --> MessageConsumer
+    Rerenaconsumer ..> ConfigLoader
+    Rerenaconsumer ..> BrokerType
 </div>
 
 
