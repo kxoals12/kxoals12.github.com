@@ -105,6 +105,9 @@ classDiagram
     Rerenaconsumer ..> BrokerType
 </div>
 
+<script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
 ## 4. 사용한 오픈소스 및 라이브러리 분석
 
 ### 4.1 Java Standard Library (JDK)
