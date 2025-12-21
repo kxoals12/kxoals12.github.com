@@ -104,6 +104,77 @@ classDiagram
     Rerenaconsumer ..> ConfigLoader
     Rerenaconsumer ..> BrokerType
 ```
+\
+<div class="mermaid">
+classDiagram
+    direction LR
+
+```
+%% Core Abstraction
+class MessageConsumer {
+    <<interface>>
+    +connect()
+    +consumeMessages()
+    +close()
+}
+
+class AbstractConsumer {
+    <<abstract>>
+    #String host
+    #int port
+    #String queue
+    +connect()
+}
+
+class BrokerType {
+    <<enumeration>>
+    REDIS
+    RABBITMQ
+    NATS
+}
+
+%% Implementations
+class RedisConsumer {
+    +consumeMessages()
+}
+
+class RabbitMQConsumer {
+    +consumeMessages()
+}
+
+class NatsConsumer {
+    +consumeMessages()
+}
+
+%% Config
+class ConfigLoader {
+    +static load()
+    +static get(String key)
+    +static watch(Runnable onChange)
+}
+
+%% Service
+class RerenaConsumer {
+    -MessageConsumer consumer
+    -ExecutorService executor
+    +start()
+    -startConsumer()
+    -restartConsumer()
+}
+
+MessageConsumer <|.. AbstractConsumer
+AbstractConsumer <|-- RedisConsumer
+AbstractConsumer <|-- RabbitMQConsumer
+AbstractConsumer <|-- NatsConsumer
+
+RerenaConsumer --> MessageConsumer
+RerenaConsumer ..> ConfigLoader
+RerenaConsumer ..> BrokerType
+```
+
+</div>
+
+---
 
 ### 2.2 핵심 설계 포인트
 
