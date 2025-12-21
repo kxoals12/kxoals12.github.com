@@ -38,115 +38,73 @@ comments: true
 
 ### 2.1 클래스 다이어그램
 
+
+
 <div class="mermaid">
 classDiagram
     direction LR
 
-```
-%% Core Abstraction
-class MessageConsumer {
-    «interface»
-    +connect()
-    +consumeMessages()
-    +close()
-}
+    %% Core Abstraction
+    class MessageConsumer {
+        «interface»
+        +connect()
+        +consumeMessages()
+        +close()
+    }
 
-class AbstractConsumer {
-    «abstract»
-    #String host
-    #int port
-    #String queue
-    +connect()
-}
+    class AbstractConsumer {
+        «abstract»
+        #String host
+        #int port
+        #String queue
+        +connect()
+    }
 
-class BrokerType {
-    «enumeration»
-    REDIS
-    RABBITMQ
-    NATS
-}
+    class BrokerType {
+        «enumeration»
+        REDIS
+        RABBITMQ
+        NATS
+    }
 
-%% Implementations
-class RedisConsumer {
-    +consumeMessages()
-}
+    %% Implementations
+    class RedisConsumer {
+        +consumeMessages()
+    }
 
-class RabbitMQConsumer {
-    +consumeMessages()
-}
+    class RabbitMQConsumer {
+        +consumeMessages()
+    }
 
-class NatsConsumer {
-    +consumeMessages()
-}
+    class NatsConsumer {
+        +consumeMessages()
+    }
 
-%% Config
-class ConfigLoader {
-    +static load()
-    +static get(String key)
-    +static watch(Runnable onChange)
-}
+    %% Config
+    class ConfigLoader {
+        +static load()
+        +static get(String key)
+        +static watch(Runnable onChange)
+    }
 
-%% Service
-class Rerenaconsumer {
-    -MessageConsumer consumer
-    -ExecutorService executor
-    +start()
-    -startConsumer()
-    -restartConsumer()
-}
+    %% Service
+    class Rerenaconsumer {
+        -MessageConsumer consumer
+        -ExecutorService executor
+        +start()
+        -startConsumer()
+        -restartConsumer()
+    }
 
-MessageConsumer <|.. AbstractConsumer
-AbstractConsumer <|-- RedisConsumer
-AbstractConsumer <|-- RabbitMQConsumer
-AbstractConsumer <|-- NatsConsumer
+    MessageConsumer <|.. AbstractConsumer
+    AbstractConsumer <|-- RedisConsumer
+    AbstractConsumer <|-- RabbitMQConsumer
+    AbstractConsumer <|-- NatsConsumer
 
-Rerenaconsumer --> MessageConsumer
-Rerenaconsumer ..> ConfigLoader
-Rerenaconsumer ..> BrokerType
-```
-
+    Rerenaconsumer --> MessageConsumer
+    Rerenaconsumer ..> ConfigLoader
+    Rerenaconsumer ..> BrokerType
 </div>
-
----
-
-## 3. 동적 동작 분석: 시퀀스 다이어그램
-
-아래는 설정 파일 변경 시 **Consumer가 안전하게 교체되는 전체 흐름**입니다.
-
-### 3.1 핫 리로딩 시퀀스
-
-<div class="mermaid">
-sequenceDiagram
-    autonumber
-    participant OS as OS / config.properties
-    participant App as Rerenaconsumer
-    participant Config as ConfigLoader
-    participant Exec as ExecutorService
-    participant Consumer as Current Consumer
-
-```
-App->>Config: load()
-App->>Config: watch(restartConsumer)
-
-App->>App: startConsumer()
-App->>Config: get("use")
-App->>Exec: submit(consumeMessages)
-
-OS-->>Config: 파일 변경 감지
-Config->>Config: load()
-Config->>App: restartConsumer()
-
-App->>Consumer: close()
-App->>Exec: shutdownNow()
-
-App->>Exec: new Executor
-App->>Config: get("use")
-App->>Exec: submit(new consumeMessages)
-```
-
-</div>
-
----
 
 ## 4. 사용한 오픈소스 및 라이브러리 분석
 
