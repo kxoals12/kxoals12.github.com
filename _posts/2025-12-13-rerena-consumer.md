@@ -43,30 +43,28 @@ comments: true
 classDiagram
     direction LR
 
-    %% Core Abstraction
     class MessageConsumer {
-        «interface»
+        <<interface>>
         +connect()
         +consumeMessages()
         +close()
     }
 
     class AbstractConsumer {
-        «abstract»
-        #String host
-        #int port
-        #String queue
+        <<abstract>>
+        #host : String
+        #port : int
+        #queue : String
         +connect()
     }
 
     class BrokerType {
-        «enumeration»
+        <<enumeration>>
         REDIS
         RABBITMQ
         NATS
     }
 
-    %% Implementations
     class RedisConsumer {
         +consumeMessages()
     }
@@ -79,17 +77,15 @@ classDiagram
         +consumeMessages()
     }
 
-    %% Config
     class ConfigLoader {
-        +static load()
-        +static get(String key)
-        +static watch(Runnable onChange)
+        +load()
+        +get(key : String)
+        +watch(onChange : Runnable)
     }
 
-    %% Service
     class Rerenaconsumer {
-        -MessageConsumer consumer
-        -ExecutorService executor
+        -consumer : MessageConsumer
+        -executor : ExecutorService
         +start()
         -startConsumer()
         -restartConsumer()
@@ -104,6 +100,7 @@ classDiagram
     Rerenaconsumer ..> ConfigLoader
     Rerenaconsumer ..> BrokerType
 </div>
+
 
 <script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
