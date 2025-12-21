@@ -56,9 +56,9 @@ classDiagram
 
     class AbstractConsumer {
         <<abstract>>
-        #host : String
-        #port : int
-        #queue : String
+        #String host
+        #int port
+        #String queue
         +connect()
     }
 
@@ -83,18 +83,19 @@ classDiagram
 
     class ConfigLoader {
         +load()
-        +get(key : String)
-        +watch(onChange : Runnable)
+        +get(String key)
+        +watch(Runnable onChange)
     }
 
     class Rerenaconsumer {
-        -consumer : MessageConsumer
-        -executor : ExecutorService
+        -MessageConsumer consumer
+        -ExecutorService executor
         +start()
         -startConsumer()
         -restartConsumer()
     }
 
+    %% 관계 정의
     MessageConsumer <|.. AbstractConsumer
     AbstractConsumer <|-- RedisConsumer
     AbstractConsumer <|-- RabbitMQConsumer
