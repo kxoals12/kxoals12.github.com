@@ -43,7 +43,7 @@ comments: true
   mermaid.initialize({
     startOnLoad: true,
     theme: 'default',
-    securityLevel: 'loose'
+    securityLevel: 'loose' // HTML 태그 허용 등 유연한 렌더링을 위해 유지
   });
 </script>
 
