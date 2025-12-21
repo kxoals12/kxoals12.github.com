@@ -109,9 +109,6 @@ classDiagram
     Rerenaconsumer ..> BrokerType
 </div>
 
-<script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
-
 ## 3. 동적 동작 분석: 시퀀스 다이어그램
 
 아래는 설정 파일 변경 시 **Consumer가 안전하게 교체되는 전체 흐름**입니다.
