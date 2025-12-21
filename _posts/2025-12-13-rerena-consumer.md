@@ -4,12 +4,12 @@ layout: post
 title: "Rerena Consumer"
 date: 2025-12-13
 excerpt: "Hot-swappable Java Consumer architecture with Redis, RabbitMQ, and NATS"
-
-* java
-* messaging
-* architecture
-* mermaid
-* jekyll
+tag:
+- java 
+- messaging
+- architecture
+- mermaid
+- jekyll
   comments: true
 
 ---
