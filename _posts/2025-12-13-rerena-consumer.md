@@ -9,7 +9,7 @@ tag:
 - architecture
 - mermaid
 - jekyll
-comments: true
+    comments: true
 ---
 
 # 메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석
