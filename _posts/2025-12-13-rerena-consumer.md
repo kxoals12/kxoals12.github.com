@@ -45,10 +45,10 @@ comments: true
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
-  // 라이브러리 초기화
-  mermaid.initialize({ 
+  mermaid.initialize({
     startOnLoad: true,
-    theme: 'default'
+    theme: 'default',
+    securityLevel: 'loose'
   });
 </script>
 
@@ -113,7 +113,6 @@ classDiagram
     Rerenaconsumer ..> ConfigLoader
     Rerenaconsumer ..> BrokerType
 </div>
-
 
 <script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
