@@ -4,7 +4,6 @@ layout: post
 title: "Rerena Consumer"
 date: 2025-12-13
 excerpt: "Hot-swappable Java Consumer architecture with Redis, RabbitMQ, and NATS"
-tag:
 
 * java
 * messaging
@@ -15,7 +14,7 @@ tag:
 
 ---
 
-# 📝 메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석
+# 메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석
 
 ## Rerena 프로젝트
 
