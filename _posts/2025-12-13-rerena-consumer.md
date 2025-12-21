@@ -108,6 +108,45 @@ classDiagram
 <script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 
+## 3. 동적 동작 분석: 시퀀스 다이어그램
+
+아래는 설정 파일 변경 시 **Consumer가 안전하게 교체되는 전체 흐름**입니다.
+
+### 3.1 핫 리로딩 시퀀스
+
+<div class="mermaid">
+sequenceDiagram
+    autonumber
+    participant OS as OS / config.properties
+    participant App as Rerenaconsumer
+    participant Config as ConfigLoader
+    participant Exec as ExecutorService
+    participant Consumer as Current Consumer
+
+```
+App->>Config: load()
+App->>Config: watch(restartConsumer)
+
+App->>App: startConsumer()
+App->>Config: get("use")
+App->>Exec: submit(consumeMessages)
+
+OS-->>Config: 파일 변경 감지
+Config->>Config: load()
+Config->>App: restartConsumer()
+
+App->>Consumer: close()
+App->>Exec: shutdownNow()
+
+App->>Exec: new Executor
+App->>Config: get("use")
+App->>Exec: submit(new consumeMessages)
+```
+
+</div>
+
+---
+
 ## 4. 사용한 오픈소스 및 라이브러리 분석
 
 ### 4.1 Java Standard Library (JDK)
