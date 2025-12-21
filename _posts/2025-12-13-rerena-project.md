@@ -12,7 +12,6 @@ tag:
 comments: true
 ---
 
-
 # 📝 메시징 브로커 핫 스와핑을 위한 자바 Consumer 아키텍처 분석
 
 ## Rerena 프로젝트
@@ -31,6 +30,9 @@ comments: true
 
 모든 설명은 **Mermaid 다이어그램**을 기반으로 합니다.
 
+<script src="[https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js)"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
 ---
 
 ## 2. 정적 구조 분석: 클래스 다이어그램
@@ -39,7 +41,7 @@ comments: true
 
 ### 2.1 클래스 다이어그램
 
-```mermaid
+<div class="mermaid">
 classDiagram
     direction LR
 
@@ -103,8 +105,7 @@ classDiagram
     Rerenaconsumer --> MessageConsumer
     Rerenaconsumer ..> ConfigLoader
     Rerenaconsumer ..> BrokerType
-```
-
+</div>
 
 ### 2.2 핵심 설계 포인트
 
@@ -125,7 +126,7 @@ classDiagram
 
 ### 3.1 핫 리로딩 시퀀스
 
-```mermaid
+<div class="mermaid">
 sequenceDiagram
     autonumber
     participant OS as OS / config.properties
@@ -151,7 +152,7 @@ sequenceDiagram
     App->>Exec: new Executor
     App->>Config: get("use")
     App->>Exec: submit(new consumeMessages)
-```
+</div>
 
 ### 3.2 동작 요약
 
